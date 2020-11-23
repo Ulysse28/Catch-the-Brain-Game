@@ -1,7 +1,7 @@
 import pygame
 
 from circle import Circle
-from white import White
+from brain import Brain
 
 class Game:
     def __init__(self):
@@ -12,8 +12,8 @@ class Game:
         self.all_circles = pygame.sprite.Group()
 
 
-        self.white = White()
-        self.all_whites = pygame.sprite.Group()
+        self.brain = Brain()
+        self.all_brains = pygame.sprite.Group()
 
 
 
@@ -21,15 +21,19 @@ class Game:
     def level1(self):
 
         self.first_level = True
+        self.second_level = False
+        self.welcome = False
         self.spawn_circle()
         self.spawn_white()
 
     def level2(self):
         self.second_level = True
+        self.first_level = False
+        self.welcome = False
         self.spawn_circle()
 
     def update2(self, screen):
-        screen.blit(self.white.image, self.white.rect)
+        screen.blit(self.brain.image, self.brain.rect)
 
 
 
@@ -38,7 +42,7 @@ class Game:
     def update(self, screen):
 
         screen.blit(self.circle.image, self.circle.rect)
-        screen.blit(self.white.image, self.white.rect)
+        screen.blit(self.brain.image, self.brain.rect)
 
     def spawn_circle(self):
 
@@ -46,8 +50,8 @@ class Game:
         self.all_circles.add(circle)
 
     def spawn_white(self):
-        white = White()
-        self.all_whites.add(white)
+        brain = Brain()
+        self.all_brains.add(brain)
 
 
 
