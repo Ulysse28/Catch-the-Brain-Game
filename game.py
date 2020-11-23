@@ -8,6 +8,7 @@ class Game:
         self.welcome = True
         self.first_level = False
         self.second_level = False
+        self.third_level = False
         self.circle = Circle()
         self.all_circles = pygame.sprite.Group()
 
@@ -24,13 +25,19 @@ class Game:
         self.second_level = False
         self.welcome = False
         self.spawn_circle()
-        self.spawn_white()
+        self.spawn_brain()
 
     def level2(self):
         self.second_level = True
         self.first_level = False
         self.welcome = False
         self.spawn_circle()
+
+    def level3(self):
+        self.first_level = False
+        self.second_level = False
+        self.third_level = True
+        self.welcome = False
 
     def update2(self, screen):
         screen.blit(self.brain.image, self.brain.rect)
@@ -49,7 +56,7 @@ class Game:
         circle = Circle()
         self.all_circles.add(circle)
 
-    def spawn_white(self):
+    def spawn_brain(self):
         brain = Brain()
         self.all_brains.add(brain)
 

@@ -113,14 +113,18 @@ while running:
 
 
             if level_1_button_rect.collidepoint(event.pos):
-                    game.level1()
-                    screen.blit(cache,(level_1_button_rect))
-                    screen.blit(cache,(level_2_button_rect ))
+                game.level1()
+                screen.blit(cache,(level_1_button_rect))
+                screen.blit(cache,(level_2_button_rect ))
 
             elif level_2_button_rect.collidepoint(event.pos):
-                    game.level2()
-                    screen.blit(cache, (level_1_button_rect))
-                    screen.blit(cache, (level_2_button_rect))
+                game.level2()
+                screen.blit(cache, (level_1_button_rect))
+                screen.blit(cache, (level_2_button_rect))
+
+            elif level_3_button_rect.collidepoint(event.pos):
+                game.level3()
+
 
 
 
