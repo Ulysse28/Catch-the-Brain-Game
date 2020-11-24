@@ -31,6 +31,17 @@ cache2 = pygame.image.load('Images/square.png')
 #importer le cerveau
 clue = pygame.image.load('Images/brain.png')
 
+#importer target
+target = pygame.image.load('Images/target.png')
+target_rect = target.get_rect()
+target_rect.x = 100
+target_rect.y = 100
+
+#importer piggy
+piggy = pygame.image.load('Images/piggy.png')
+piggy_rect = piggy.get_rect()
+piggy_rect.x = 200
+piggy_rect.y = 200
 
 #importer le bouton level 1
 level_1_button = pygame.image.load('Images/one.png')
@@ -68,6 +79,10 @@ while running:
     #Niveau 2
     elif game.second_level:
         game.update2(screen)
+    elif game.third_level:
+        game.update3(screen)
+        screen.blit(target, (target_rect))
+        screen.blit(piggy, (piggy_rect))
     elif game.welcome:
         # ecran d'accueil avec boutton de niveau
         screen.blit(level_1_button, (level_1_button_rect))
@@ -95,7 +110,7 @@ while running:
 
         #si le joueur appuie sur la souris
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            score = 0
+
             if game.brain.rect.collidepoint(event.pos):
 
                 #cache le cerveau
@@ -110,17 +125,24 @@ while running:
                 game.circle.rect.x = random.randint(0, 1000)
                 game.circle.rect.y = random.randint(0, 500)
 
+                #nouvelle coordonnées de la target
+                target_rect.x = random.randint(0, 1000)
+                target_rect.y = random.randint(0, 600)
+
+                #nouvelle coordonnées de piggy
+                piggy_rect.x = random.randint(0, 1000)
+                piggy_rect.y = random.randint(0, 600)
 
 
             if level_1_button_rect.collidepoint(event.pos):
                 game.level1()
-                screen.blit(cache,(level_1_button_rect))
-                screen.blit(cache,(level_2_button_rect ))
+                #screen.blit(cache,(level_1_button_rect))
+               # screen.blit(cache,(level_2_button_rect ))
 
             elif level_2_button_rect.collidepoint(event.pos):
                 game.level2()
-                screen.blit(cache, (level_1_button_rect))
-                screen.blit(cache, (level_2_button_rect))
+               # screen.blit(cache, (level_1_button_rect))
+              #  screen.blit(cache, (level_2_button_rect))
 
             elif level_3_button_rect.collidepoint(event.pos):
                 game.level3()

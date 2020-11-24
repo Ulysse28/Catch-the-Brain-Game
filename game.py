@@ -38,6 +38,7 @@ class Game:
         self.second_level = False
         self.third_level = True
         self.welcome = False
+        self.spawn_circle()
 
     def update2(self, screen):
         screen.blit(self.brain.image, self.brain.rect)
@@ -49,6 +50,9 @@ class Game:
     def update(self, screen):
 
         screen.blit(self.circle.image, self.circle.rect)
+        screen.blit(self.brain.image, self.brain.rect)
+
+    def update3(self, screen):
         screen.blit(self.brain.image, self.brain.rect)
 
     def spawn_circle(self):
