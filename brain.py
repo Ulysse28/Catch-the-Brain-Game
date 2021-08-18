@@ -1,6 +1,11 @@
+"""
+Catch the Brain
+A Python Game made with Pygame
+Game Python File
+By Ulysse Valdenaire
+"""
 import pygame
 import random
-
 
 class Brain(pygame.sprite.Sprite):
     def __init__(self):
@@ -11,21 +16,3 @@ class Brain(pygame.sprite.Sprite):
         self.rect.y = random.randint(0, 470)
         self.velocity = 1
         self.score = 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

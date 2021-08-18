@@ -1,16 +1,19 @@
-
+"""
+Catch the Brain
+A Python Game made with Pygame
+Main Python File
+By Ulysse Valdenaire
+"""
 #importation des classes et modules
 import pygame
 import random
 import math
 from game import Game
 
-
 #initialisation du module pygame
 pygame.init()
 
-
-#générer le fentre de jeu
+#générer le fenêtre de jeu
 pygame.display.set_caption("Catch the Circle")
 screen = pygame.display.set_mode((1080, 600))
 
@@ -18,19 +21,14 @@ screen = pygame.display.set_mode((1080, 600))
 background = pygame.image.load('Images/fond.jpg')
 background = pygame.transform.scale(background, (1080, 600))
 
-
-
-
 #importer l'image pour cacher le cercle
 cache = pygame.image.load('Images/square.png')
 
 #importer l'image pour cacher le cerveau
 cache2 = pygame.image.load('Images/square.png')
 
-
 #importer le cerveau
 clue = pygame.image.load('Images/brain.png')
-
 
 #importer le bouton level 1
 level_1_button = pygame.image.load('Images/one.png')
@@ -44,24 +42,12 @@ level_2_button_rect = level_2_button.get_rect()
 level_2_button_rect.x = math.ceil(screen.get_width() / 2.2)
 level_2_button_rect.y = math.ceil(screen.get_height() / 2.0)
 
-#importer le boutton level 3
-level_3_button = pygame.image.load('Images/three.png')
-level_3_button_rect = level_3_button.get_rect()
-level_3_button_rect.x = math.ceil(screen.get_width() / 2.2)
-level_3_button_rect.y = math.ceil(screen.get_height() / 1.6)
-
-
 game = Game()
 
 #boucle du jeu
 running = True
-
 while running:
-
     screen.blit(background, (0, 0))
-
-    #ecran d'accueil ou de jeu
-
     #Niveau 1
     if game.first_level:
         game.update(screen)
@@ -72,8 +58,6 @@ while running:
         # ecran d'accueil avec boutton de niveau
         screen.blit(level_1_button, (level_1_button_rect))
         screen.blit(level_2_button, (level_2_button_rect))
-        screen.blit(level_3_button, (level_3_button_rect))
-
 
     #mise à jour de l'écran
     pygame.display.flip()
@@ -97,43 +81,20 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             score = 0
             if game.brain.rect.collidepoint(event.pos):
-
                 #cache le cerveau
                 screen.blit(cache, (game.brain.rect.x, game.brain.rect.y))
-
                 #nouvelles coordonnées du cercle
                 game.brain.rect.x = game.circle.rect.x
                 game.brain.rect.y = game.circle.rect.y
-
-
                 #nouvelles coordonnées du cerveaux
                 game.circle.rect.x = random.randint(0, 1000)
                 game.circle.rect.y = random.randint(0, 500)
-
-
 
             if level_1_button_rect.collidepoint(event.pos):
                     game.level1()
                     screen.blit(cache,(level_1_button_rect))
                     screen.blit(cache,(level_2_button_rect ))
-
             elif level_2_button_rect.collidepoint(event.pos):
                     game.level2()
                     screen.blit(cache, (level_1_button_rect))
                     screen.blit(cache, (level_2_button_rect))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

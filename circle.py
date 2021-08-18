@@ -1,6 +1,11 @@
+"""
+Catch the Brain
+A Python Game made with Pygame
+Circle Python File
+By Ulysse Valdenaire
+"""
 import pygame
 import random
-
 
 class Circle(pygame.sprite.Sprite):
     def __init__(self):
@@ -9,15 +14,3 @@ class Circle(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randint(0, 1000)
         self.rect.y = random.randint(0, 470)
-
-
-
-
-
-
-
-
-
-
-
-
